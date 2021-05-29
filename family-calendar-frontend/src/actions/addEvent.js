@@ -1,3 +1,5 @@
+import { EventObject } from "../calendar/EventObject"
+
 export default function addEvent(event) {
     return function(dispatch) {
       fetch("http://localhost:3001/events", {
@@ -5,7 +7,7 @@ export default function addEvent(event) {
         headers: {Accept: "application/json", "Content-Type": "application/json"},
         body: JSON.stringify({event: event})
       }).then(r => r.json())
-      .then(event => dispatch({type: "ADD_EVENT", payload: event}))
+      .then(event => dispatch({type: "ADD_EVENT", payload: new EventObject(event.data.attributes)}))
     }  
   }
   

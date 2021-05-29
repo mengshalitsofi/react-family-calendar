@@ -2,6 +2,7 @@ export default function eventsReducer(state = {events: []}, action) {
     console.log("eventsReducer")
       switch (action.type) {
         case "ADD_EVENT":
+            debugger;
           return {events: [...state.events, action.payload]}
         case "DELETE_EVENT":
           return {events: state.events.filter(event => event.id !== action.payload)}
