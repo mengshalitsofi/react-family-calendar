@@ -16,6 +16,10 @@ pickle-email-*.html
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/family-calendar-backend/log/*
+/family-calendar-backend/tmp/*
+!/family-calendar-backend/log/.keep
+!/family-calendar-backend/tmp/.keep
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
