@@ -2,7 +2,8 @@ import CalendarDayView from './CalendarDayView.js'
 
 function getDayElement(year, month, day, events) {
     return (
-        <td><CalendarDayView day={day} month={month} year={year} events={events.filter(e => e.day === day)} /></td>
+        <td><CalendarDayView day={day} month={month} year={year} 
+            events={events.filter(e => e.day === day)} /></td>
     )
 }
 
@@ -15,10 +16,10 @@ export default function MonthlyView(props) {
     const month = props.month;
     const year = props.year;
 
-    // check how many empty cells to put
-    
+    // check how many empty cells to put    
     // check which day is the first day of the month
     const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     // if firstDay=0 it's Sunday, 1 is Monday, 2 is Tuesday...
     const days = [];
@@ -26,7 +27,6 @@ export default function MonthlyView(props) {
         days.push(-1);
     }
 
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
     for (let i = 0; i < daysInMonth ; i++) {
         days.push(i);
     }                        
