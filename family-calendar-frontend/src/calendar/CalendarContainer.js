@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import fetchEvents from '../actions/fetchEvents'
 import Events from './Events'
 import Event from './Event'
+import EventForm from './EventForm'
 
 class CalendarContainer extends Component {
 
@@ -15,10 +16,9 @@ class CalendarContainer extends Component {
         return (
           <>
             <Switch>
- {/*              <Route path="/events/new">
-               <EventForm /> 
-                </Route>
-        */}
+              <Route path="/events/new/:year/:month/:day">
+                <EventForm /> 
+              </Route>        
               <Route path='/events/:id' render={(routerProps) => <Event {...routerProps}/>}/>
               <Route exact path="/events">
                 <Events events={this.props.events} />

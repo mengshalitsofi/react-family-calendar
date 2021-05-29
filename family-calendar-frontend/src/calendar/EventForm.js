@@ -10,8 +10,12 @@ class EventForm extends React.Component {
     super(props)
     this.state = {
         title: (this.props.event ? this.props.event.title : ""), 
-        id:  (this.props.event ? this.props.event.id : ""),
-        description:  (this.props.event ? this.props.event.description : "")}
+        id: (this.props.event ? this.props.event.id : ""),
+        description: (this.props.event ? this.props.event.description : ""),
+        year: parseInt(this.props.match.params.year, 10),
+        month: parseInt(this.props.match.params.month, 10),
+        day: parseInt(this.props.match.params.day, 10),
+    }
 
   }
 
@@ -24,7 +28,10 @@ class EventForm extends React.Component {
       const event = {
           title: this.state.title, 
        //   id: Math.floor(Math.random() * Math.floor(100000000)), //??
-          description: this.state.description
+          description: this.state.description,
+          day: this.state.day,
+          month: this.state.month,
+          year: this.state.year
         }
       this.props.addEvent(event)
       this.props.history.push("/events")
@@ -35,14 +42,15 @@ class EventForm extends React.Component {
 
 
   render = () => {
-
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <input type="text" onChange={this.handleChange} value={this.state.title} name="title"/>
-        <input type="text" onChange={this.handleChange} value={this.state.description} name="description"/>
-
-        <input type="submit"/>
-      </form>
+      <>
+        {`${this.state.month + 1} / ${this.state.day + 1} / ${this.state.year}`}
+        <form onSubmit={this.handleSubmit.bind(this)}>
+            Title: <input type="text" onChange={this.handleChange} value={this.state.title} name="title"/> <p/>
+            Description: <input type="text" onChange={this.handleChange} value={this.state.description} name="description"/> <p />        
+            <input type="submit"/>
+        </form>
+      </>
   )
   }
 
