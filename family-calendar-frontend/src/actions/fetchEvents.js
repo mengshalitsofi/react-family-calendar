@@ -1,3 +1,5 @@
+import { EventObject } from "../calendar/EventObject"
+
 export default function fetchEvents() {
     return (dispatch) => {        
       fetch("http://localhost:3001/events")
@@ -5,7 +7,7 @@ export default function fetchEvents() {
         return response.json()
       })
       .then((eventsArray) => {
-        dispatch({type: "FETCH_EVENTS", payload: eventsArray})
+        dispatch({type: "FETCH_EVENTS", payload: eventsArray.map(e => new EventObject(e))})
       })
     }
   }

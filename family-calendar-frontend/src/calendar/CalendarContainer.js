@@ -21,7 +21,7 @@ class CalendarContainer extends Component {
         */}
               <Route path='/events/:id' render={(routerProps) => <Event {...routerProps}/>}/>
               <Route exact path="/events">
-                <Events />
+                <Events events={this.props.events} />
               </Route>
             </Switch>
           </>

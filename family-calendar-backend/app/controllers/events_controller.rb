@@ -1,4 +1,4 @@
-class EventController < ApplicationController
+class EventsController < ApplicationController
 
     def create
       event = Event.new(event_params)
@@ -11,7 +11,7 @@ class EventController < ApplicationController
   
     def destroy
       event = Event.find_by(id: params[:id])
-      action.destroy
+      event.destroy
       render json: {message: "success"}
     end
 

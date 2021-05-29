@@ -9,6 +9,9 @@ class Events extends Component {
         const month = now.getMonth();
         const year = now.getFullYear();            
 
+        console.log("props:")
+        console.log(this.props.events ? this.props.events.length : "null")
+    
         return (
             <>
                 <MonthAndYear month={month} year={year}/>
@@ -21,6 +24,7 @@ class Events extends Component {
 
 function mapStateToProps(state) {
     console.log("mapStateToProps")
+    console.log(state.events ? state.events.length : "null")
     return {events: state.events}
   }
   

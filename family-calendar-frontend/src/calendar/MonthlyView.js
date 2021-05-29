@@ -1,5 +1,15 @@
 import CalendarDayView from './CalendarDayView.js'
 
+function getDayElement(year, month, day, events) {
+    return (
+        <td><CalendarDayView day={day} month={month} year={year} events={events.filter(e => e.day === day)} /></td>
+    )
+}
+
+function getCalendarRow(year, month, days, events) {
+    return (<tr>{days.map(day => getDayElement(year, month, day, events))}</tr>)
+}
+
 export default function MonthlyView(props) {
 
     const month = props.month;
@@ -22,15 +32,15 @@ export default function MonthlyView(props) {
     }                        
 
     const elements = [];
-    elements.push(<tr>{days.slice(0, 7).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)} /></td>)}</tr>)
-    elements.push(<tr>{days.slice(7, 14).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)}/></td>)}</tr>)
-    elements.push(<tr>{days.slice(14, 21).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)}/></td>)}</tr>)
-    elements.push(<tr>{days.slice(21, 28).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)}/></td>)}</tr>)
+    elements.push(getCalendarRow(year, month, days.slice(0, 7), props.events));
+    elements.push(getCalendarRow(year, month, days.slice(7, 14), props.events));
+    elements.push(getCalendarRow(year, month, days.slice(14, 21), props.events));
+    elements.push(getCalendarRow(year, month, days.slice(21, 28), props.events));
     if (days.length > 28) {
-        elements.push(<tr>{days.slice(28, 35).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)}/></td>)}</tr>)
+        elements.push(getCalendarRow(year, month, days.slice(28, 35), props.events));
     }
     if (days.length > 35) {
-        elements.push(<tr>{days.slice(35).map(day => <td><CalendarDayView day={day} events={props.events.filter(e => e.day === day)}/></td>)}</tr>)
+        elements.push(getCalendarRow(year, month, days.slice(35), props.events));
     }
 
     return (

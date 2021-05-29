@@ -6,7 +6,7 @@ export default function deleteEvent(eventId) {
         method: "DELETE",
         headers: {Accept: "application/json", "Content-Type": "application/json"},
       }).then(r => r.json())
-      .then(event => dispatch({type: "DELETE_EVENT", payload: event.id}))
+      .then(event => dispatch({type: "DELETE_EVENT", payload: eventId}))
     }
   
   }  
