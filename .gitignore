@@ -69,3 +69,10 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+family-calendar-frontend/src/actions/.fetchEvents.js.swn
+family-calendar-frontend/src/actions/.fetchEvents.js.swp
+family-calendar-frontend/src/calendar/.MonthlyView.js.swp
+family-calendar-frontend/src/actions/.fetchEvents.js.swp
+family-calendar-frontend/src/calendar/.MonthlyView.js.swp
+family-calendar-frontend/src/actions/.fetchEvents.js.swp
+family-calendar-frontend/src/calendar/.MonthlyView.js.swp

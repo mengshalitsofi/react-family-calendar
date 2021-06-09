@@ -18,7 +18,8 @@ class CalendarContainer extends Component {
             <Switch>
               <Route path="/events/new/:year/:month/:day">
                 <EventForm /> 
-              </Route>        
+              </Route>   
+              <Route path='/events/:id/:action' render={(routerProps) => <Event {...routerProps}/>}/>
               <Route path='/events/:id' render={(routerProps) => <Event {...routerProps}/>}/>
               <Route exact path="/events">
                 <Events events={this.props.events} />

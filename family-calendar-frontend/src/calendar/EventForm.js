@@ -16,7 +16,6 @@ class EventForm extends React.Component {
         month: parseInt(this.props.match.params.month, 10),
         day: parseInt(this.props.match.params.day, 10),
     }
-
   }
 
   handleSubmit(e) {
@@ -45,6 +44,7 @@ class EventForm extends React.Component {
     return (
       <>
         {`${this.state.month + 1} / ${this.state.day + 1} / ${this.state.year}`}
+        {this.state.edit}
         <form onSubmit={this.handleSubmit.bind(this)}>
             Title: <input type="text" onChange={this.handleChange} value={this.state.title} name="title"/> <p/>
             Description: <input type="text" onChange={this.handleChange} value={this.state.description} name="description"/> <p />        
@@ -56,7 +56,8 @@ class EventForm extends React.Component {
 
 }
 
-export default withRouter(connect(null, {addEvent: addEvent, editEvent: editEvent})(EventForm))
+export default withRouter(connect(null, 
+    {addEvent: addEvent, editEvent: editEvent})(EventForm))
 
 //connect determines if second arg is a function or an object
   // if the argument is a function, it invokes that function passing in dispatch as arg
