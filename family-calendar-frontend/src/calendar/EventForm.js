@@ -20,13 +20,18 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    
+    if (this.state.title == "") {
+      alert("Title cannot be empty")
+      return
+    }
+
     if (this.props.event) {
         this.props.editEvent(this.state)
         this.props.history.push(`/events/${this.props.event.id}`)        
     } else {
       const event = {
           title: this.state.title, 
-       //   id: Math.floor(Math.random() * Math.floor(100000000)), //??
           description: this.state.description,
           day: this.state.day,
           month: this.state.month,

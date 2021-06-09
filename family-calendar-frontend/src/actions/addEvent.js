@@ -7,7 +7,16 @@ export default function addEvent(event) {
         headers: {Accept: "application/json", "Content-Type": "application/json"},
         body: JSON.stringify({event: event})
       }).then(r => r.json())
-      .then(event => dispatch({type: "ADD_EVENT", payload: new EventObject(event.data.attributes)}))
+      .then(event => 
+        { 
+          if (event.message) {
+            // Error handling
+            alert(event.message)
+          }
+          else {
+            dispatch({type: "ADD_EVENT", payload: new EventObject(event.data.attributes)})
+          }
+        })
     }  
   }
   
