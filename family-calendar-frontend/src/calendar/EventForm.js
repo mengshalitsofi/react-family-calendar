@@ -12,9 +12,9 @@ class EventForm extends React.Component {
         title: (this.props.event ? this.props.event.title : ""), 
         id: (this.props.event ? this.props.event.id : ""),
         description: (this.props.event ? this.props.event.description : ""),
-        year: parseInt(this.props.match.params.year, 10),
-        month: parseInt(this.props.match.params.month, 10),
-        day: parseInt(this.props.match.params.day, 10),
+        year: (this.props.event ? this.props.event.year : parseInt(this.props.match.params.year, 10)),
+        month: (this.props.event ? this.props.event.month : parseInt(this.props.match.params.month, 10)),
+        day: (this.props.event ? this.props.event.day : parseInt(this.props.match.params.day, 10)),
     }
   }
 
@@ -22,7 +22,7 @@ class EventForm extends React.Component {
     e.preventDefault()
     if (this.props.event) {
         this.props.editEvent(this.state)
-
+        this.props.history.push(`/events/${this.props.event.id}`)        
     } else {
       const event = {
           title: this.state.title, 

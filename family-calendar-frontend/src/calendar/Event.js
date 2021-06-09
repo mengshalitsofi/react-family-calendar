@@ -19,7 +19,7 @@ export default function Event(props) {
         <>
           {event && isEdit &&
           <>
-            <EventForm Event={event} />
+            <EventForm event={event} />
             <Link to={`/events/${event.id}`}>Back</Link>
             </>
           }
