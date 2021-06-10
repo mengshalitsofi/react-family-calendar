@@ -1,14 +1,17 @@
 import CalendarDayView from './CalendarDayView.js'
 
 function getDayElement(year, month, day, events) {
+    const key = `${year}-${month}-${day}` // unique key for each td element
     return (
-        <td><CalendarDayView day={day} month={month} year={year} 
-            events={events.filter(e => e.day === day)} /></td>
+        <td key={"td" + key}>
+            <CalendarDayView key={"cdv" + key} day={day} month={month} year={year} events={events.filter(e => e.day === day)} />
+        </td>
     )
 }
 
 function getCalendarRow(year, month, days, events) {
-    return (<tr>{days.map(day => getDayElement(year, month, day, events))}</tr>)
+    const key = `tr-${year}-${month}-${days[0]}`; // unique key for each tr element
+    return (<tr key={key}>{days.map(day => getDayElement(year, month, day, events))}</tr>)
 }
 
 export default function MonthlyView(props) {
@@ -24,7 +27,7 @@ export default function MonthlyView(props) {
     // if firstDay=0 it's Sunday, 1 is Monday, 2 is Tuesday...
     const days = [];
     for (let i = 0; i < firstDay; i++) {
-        days.push(-1);
+        days.push(-1-i); // making all the placeholders negative
     }
 
     for (let i = 0; i < daysInMonth ; i++) {
@@ -47,33 +50,36 @@ export default function MonthlyView(props) {
         <>
             <p/>
             <table className="Monthly-view" border="1">
-                <tr>
-                    <th>
-                        Sunday
-                    </th>
-                    <th>
-                        Monday
-                    </th>
-                    <th>
-                        Tuesday
-                    </th>
-                    <th>
-                        Wednesday
-                    </th>
-                    <th>
-                        Thursday
-                    </th>
-                    <th>
-                        Friday
-                    </th>
-                    <th>
-                        Saturday
-                    </th>
-                </tr>
-
-                {
-                    elements
-                }
+                <thead>
+                    <tr>
+                        <th>
+                            Sunday
+                        </th>
+                        <th>
+                            Monday
+                        </th>
+                        <th>
+                            Tuesday
+                        </th>
+                        <th>
+                            Wednesday
+                        </th>
+                        <th>
+                            Thursday
+                        </th>
+                        <th>
+                            Friday
+                        </th>
+                        <th>
+                            Saturday
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        elements
+                    }
+                </tbody>
             </table>
         </>
     )

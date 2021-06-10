@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function CalendarDayView(props) {
 
-    if (props.day === -1) {
+    if (props.day < 0) {
         return <></>
     }
 

@@ -21,7 +21,7 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     
-    if (this.state.title == "") {
+    if (!this.state.title || this.state.title === "") {
       alert("Title cannot be empty")
       return
     }
