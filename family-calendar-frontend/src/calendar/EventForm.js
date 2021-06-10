@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import addEvent from '../actions/addEvent'
 import editEvent from '../actions/editEvent'
@@ -49,12 +49,14 @@ class EventForm extends React.Component {
     return (
       <>
         {`${this.state.month + 1} / ${this.state.day + 1} / ${this.state.year}`}
-        {this.state.edit}
         <form onSubmit={this.handleSubmit.bind(this)}>
             Title: <input type="text" onChange={this.handleChange} value={this.state.title} name="title"/> <p/>
             Description: <input type="text" onChange={this.handleChange} value={this.state.description} name="description"/> <p />        
             <input type="submit"/>
         </form>
+        { !this.props.event && 
+          <Link to="/events">Back</Link>
+        }
       </>
   )
   }
