@@ -1,17 +1,15 @@
 import CalendarDayView from './CalendarDayView.js'
 
 function getDayElement(year, month, day, events) {
-    const key = `${year}-${month}-${day}` // unique key for each td element
     return (
-        <td key={"td" + key}>
-            <CalendarDayView key={"cdv" + key} day={day} month={month} year={year} events={events.filter(e => e.day === day)} />
+        <td key={"td" + day}>
+            <CalendarDayView key={"cdv" + day} day={day} month={month} year={year} events={events.filter(e => e.day === day)} />
         </td>
     )
 }
 
 function getCalendarRow(year, month, days, events) {
-    const key = `tr-${year}-${month}-${days[0]}`; // unique key for each tr element
-    return (<tr key={key}>{days.map(day => getDayElement(year, month, day, events))}</tr>)
+    return (<tr key={days[0]}>{days.map(day => getDayElement(year, month, day, events))}</tr>)
 }
 
 export default function MonthlyView(props) {
@@ -21,10 +19,9 @@ export default function MonthlyView(props) {
 
     // check how many empty cells to put    
     // check which day is the first day of the month
-    const firstDay = new Date(year, month, 1).getDay();
+    const firstDay = new Date(year, month, 1).getDay(); // if firstDay=0 it's Sunday, 1 is Monday, 2 is Tuesday...
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // if firstDay=0 it's Sunday, 1 is Monday, 2 is Tuesday...
+    
     const days = [];
     for (let i = 0; i < firstDay; i++) {
         days.push(-1-i); // making all the placeholders negative
