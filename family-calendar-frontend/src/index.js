@@ -9,11 +9,9 @@ import App from './App';
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk';
 
-const initialState = {events: [ 
-  { id: 1, month: 4, year: 2021, day: 3, title: "t1", description: "test" },
-  { id: 2, month: 4, year: 2021, day: 3, title: "t2", description: "test2" },
-  { id: 3, month: 4, year: 2021, day: 13, title: "t3", description: "other" },
-]};
+const initialState = {
+  events: []
+};
 
 const store = createStore(eventsReducer, initialState, applyMiddleware(thunk)
   //,compose(applyMiddleware(thunk), composeWithDevTools())
