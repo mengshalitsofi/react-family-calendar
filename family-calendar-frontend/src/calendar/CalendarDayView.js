@@ -17,7 +17,7 @@ export default function CalendarDayView(props) {
                 props.events.map(e => 
                 <><Link to={`/events/${e.id}`}>{e.title}</Link><p/></>) : "No Events"}
             <p />
-            <a href={`/events/new/${props.year}/${props.month}/${props.day}`}>Add</a>
+            <Link to={`/events/new/${props.year}/${props.month}/${props.day}`}>Add</Link>
         </>
     )
 }
