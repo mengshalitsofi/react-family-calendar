@@ -2,8 +2,9 @@ import CalendarDayView from './CalendarDayView.js'
 
 function getDayElement(year, month, day, events) {
     return (
-        <td key={"td" + day}>
-            <CalendarDayView key={"cdv" + day} day={day} month={month} year={year} events={events.filter(e => e.day === day)} />
+        <td key={"td" + day}>          
+            <CalendarDayView key={"cdv" + day} day={day} month={month} year={year} 
+                events={events.filter(e => e.day === day)} />
         </td>
     )
 }
