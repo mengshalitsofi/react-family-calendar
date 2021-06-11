@@ -8,6 +8,6 @@ export default function editEvent(event) {
         body: JSON.stringify({event: event})
       }).then(r => r.json())
       .then(list => dispatch({type: "EDIT_EVENT", payload: event}))
-  
+      .catch((error) => {alert("Error editing event: " + error)})      
     }
   }  

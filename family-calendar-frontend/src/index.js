@@ -13,16 +13,18 @@ const initialState = {
   events: []
 };
 
+// create redux store
 const store = createStore(eventsReducer, initialState,
   compose(applyMiddleware(thunk), composeWithDevTools()))
 
 console.log(`created store: ${store}`);
 
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
+  // client side routing and history props
+  <Router> 
+    <Provider store={store}> { /* redux store */}
       <App />
     </Provider>
   </Router>,
-  document.getElementById('root')
+  document.getElementById('root') // this is where all the react content goes into
 );

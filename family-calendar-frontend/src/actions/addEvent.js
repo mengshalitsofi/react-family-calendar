@@ -6,7 +6,8 @@ export default function addEvent(event) {
         method: "POST",
         headers: {Accept: "application/json", "Content-Type": "application/json"},
         body: JSON.stringify({event: event})
-      }).then(r => r.json())
+      })
+      .then(r => r.json() )
       .then(event => 
         { 
           if (event.message) {
@@ -17,6 +18,9 @@ export default function addEvent(event) {
             dispatch({type: "ADD_EVENT", payload: new EventObject(event.data.attributes)})
           }
         })
+        .catch((error) => {alert("Error add event: " + error)})
+
+        
     }  
   }
   

@@ -4,10 +4,14 @@ import {connect} from 'react-redux'
 import addEvent from '../actions/addEvent'
 import editEvent from '../actions/editEvent'
 
+// can be used for editing or creating a new event
 class EventForm extends React.Component {
 
   constructor(props) {
     super(props)
+
+    // if this.props.event exists we're in Edit mode otherwise it's a new event
+    // If it's a new event, get the year/month/day from the URL
     this.state = {
         title: (this.props.event ? this.props.event.title : ""), 
         id: (this.props.event ? this.props.event.id : ""),
@@ -21,15 +25,17 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     
+    // validation
     if (!this.state.title || this.state.title === "") {
       alert("Title cannot be empty")
       return
     }
 
-    if (this.props.event) {
+    if (this.props.event) { // edit mode. Call EditEvent and then move to view this event
         this.props.editEvent(this.state)
         this.props.history.push(`/events/${this.props.event.id}`)        
     } else {
+      // new event. add it with AddEvent and move back to the main screen
       const event = {
           title: this.state.title, 
           description: this.state.description,
@@ -42,6 +48,7 @@ class EventForm extends React.Component {
     }
   }
 
+  // event handler for both input text boxes
   handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
 
 

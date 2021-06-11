@@ -1,4 +1,5 @@
-// used to convert the json objects from the backend to a nice class with numbers instead of strings
+// used to convert the json objects from the backend 
+// to a nice class with numbers instead of strings
 export class EventObject {
     constructor (event) {
         this.id = parseInt(event.id, 10)

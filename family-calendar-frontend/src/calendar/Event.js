@@ -5,11 +5,18 @@ import EventForm from './EventForm'
 
 
 export default function Event(props) {
+  // Get all the events from the store
   const events = useSelector(function(state) {return state.events})
+
+  // Locate the specific event based on the ID in the URL
   const event = events.find(e => e.id === parseInt(props.match.params.id))
+
+  // Check if we're Edit mode or View mode, based on the URL. If it has "edit" action we're in Edit
+  // otherwise we're in view.
   const isEdit = props.match.params.action && props.match.params.action === "edit"
   const dispatch = useDispatch()
 
+  // delete the event and redirect to the main view
   const handleDelete = () => {
     dispatch(deleteEvent(event.id))
     props.history.push("/events")
@@ -17,13 +24,13 @@ export default function Event(props) {
 
   return (
         <>
-          {event && isEdit &&
+          {event && isEdit && // Edit mode
           <>
             <EventForm event={event} />
             <Link to={`/events/${event.id}`}>Back</Link>
             </>
           }
-          {event && !isEdit &&
+          {event && !isEdit && // View mode
           <>
             <h1>
                 {event.title}              
