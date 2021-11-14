@@ -14,6 +14,7 @@ class Events extends Component {
     
         return (
             <>
+                <br />
                 <MonthAndYear month={month} year={year}/>
                 {/* Filter all the events to only get the ones for this month
                     and year and pass them to MonthlyView */}
