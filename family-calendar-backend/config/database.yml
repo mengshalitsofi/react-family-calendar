@@ -11,7 +11,7 @@ default: &default
   port: 1433
   database: familist
   username: tsofi
-  password: 5zQh9Z6pEUb99h
+  password: <password goes here>
   azure: true
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000

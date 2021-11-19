@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 1) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.decimal "day"
-    t.decimal "month"
-    t.decimal "year"
+    t.decimal "day", precision: 18
+    t.decimal "month", precision: 18
+    t.decimal "year", precision: 18
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
